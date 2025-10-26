@@ -1,12 +1,15 @@
 name: Daily Commit Workflow
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: '50 8 * * *'
+    - cron: '55 8 * * *'
 
 jobs:
   daily-commit:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
