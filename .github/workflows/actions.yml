@@ -1,0 +1,21 @@
+name: Daily Commit Workflow
+
+on:
+  schedule:
+    - cron: '50 8 * * *'
+
+jobs:
+  daily-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 22f3002277@ds.study.iitm.ac.in
+        run: |
+          echo "Daily commit at $(date)" > daily.txt
+          git config --global user.name "GitHub Action Bot"
+          git config --global user.email "22f3002277@ds.study.iitm.ac.in"
+          git add daily.txt
+          git commit -m "Daily commit: $(date)"
+          git push
